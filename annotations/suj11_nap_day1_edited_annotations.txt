@@ -1,0 +1,199 @@
+Onset,Duration,Annotation
++0.016896,,Marker:Markon: w
++29.8282087,,Marker:Markoff: w
++30.233896,,Marker:Markon: w
++59.8073557,,Marker:Markoff: w
++60.2101993,,Marker:Markon: w
++89.8756021,,Marker:Markoff: w
++90.116896,,Marker:Markon: w
++119.8850808,,Marker:Markoff: w
++120.169441,,Marker:Markon: w
++149.916422,,Marker:Markoff: w
++150.1533888,,Marker:Markon: w
++179.8448391,,Marker:Markoff: w
++180.152896,,Marker:Markon: w
++209.8780144,,Marker:Markoff: w
++210.1623746,,Marker:Markon: w
++239.7642704,,Marker:Markoff: w
++240.237896,,Marker:Markon: w
++269.8608391,,Marker:Markoff: w
++270.191896,,Marker:Markon: 1
++299.841185,,Marker:Markoff: 1
++300.1966353,,Marker:Markon: 1
++329.8317064,,Marker:Markoff: 1
++330.23455,,Marker:Markon: 1
++359.869621,,Marker:Markoff: 1
++360.2013746,,Marker:Markon: 1
++389.8032703,,Marker:Markoff: 1
++390.2061139,,Marker:Markon: 1
++419.798531,,Marker:Markoff: 1
++420.318896,,Marker:Markon: 2
++423.0497158,,spindle
++427.0307585,,spindle
++444.855403,,spindle
++449.8117869,,Marker:Markoff: 2
++450.1672372,,Marker:Markon: 2
++461.4762561,,k-complex
++474.4231614,,spindle 
++479.8402229,,Marker:Markoff: 2
++480.2193699,,Marker:Markon: 2
++509.8781376,,Marker:Markoff: 2
++510.2809812,,Marker:Markon: 2
++527.7075215,,spindle 
++539.8591803,,Marker:Markoff: 2
++540.2383272,,Marker:Markon: 2
++547.1492419,,spindle
++551.3435547,,spindle
++569.8686589,,Marker:Markoff: 2
++570.2715026,,Marker:Markon: 2
++573.0165404,,spindle
++588.0013604,,k-complex
++588.404204,,spindle
++591.911313,,spindle
++599.9113129,,Marker:Markoff: 2
++600.2193698,,Marker:Markon: 2
++610.9776636,,spindle
++615.3046778,,spindle
++619.0297963,,spindle
++626.1435404,,spindle
++629.8686588,,Marker:Markoff: 2
++630.2715024,,Marker:Markon: 2
++633.0155783,,spindle
++659.7586021,,Marker:Markoff: 2
++660.1851424,,Marker:Markon: 2
++661.6838247,,spindle
++671.181455,,spindle
++677.6922514,,spindle
++689.7822988,,Marker:Markoff: 2
++690.2799291,,Marker:Markon: 2
++695.2372751,,spindle
++719.8052893,,Marker:Markoff: 2
++720.1370429,,Marker:Markon: 2
++745.2941471,,spindle
++749.852986,,Marker:Markoff: 2
++750.1847396,,Marker:Markon: 2
++776.7443841,,spindle
++779.828986,,Marker:Markoff: 2
++780.1370429,,Marker:Markon: 2
++802.9434362,,k-complex
++809.843204,,Marker:Markoff: 2
++810.1749576,,Marker:Markon: 2
++815.0998343,,spindle
++834.2325357,,spindle
++839.8052893,,Marker:Markoff: 2
++840.1133462,,Marker:Markon: 2
++845.7538627,,k-complex
++850.279929,,spindle
++859.6495973,,spindle
++869.852986,,Marker:Markoff: 2
++870.1847396,,Marker:Markon: 2
++896.7775594,,spindle
++899.828986,,Marker:Markoff: 2
++900.184896,,Marker:Markon: 2
++901.0138201,,spindle
++910.0950949,,spindle
++929.781896,,Marker:Markoff: 2
++930.2270903,,Marker:Markon: 2
++945.8960428,,spindle
++950.0524409,,spindle
++959.757896,,Marker:Markoff: 2
++960.184896,,Marker:Markon: 2
++973.0849102,,spindle
++976.2839623,,spindle
++989.781896,,Marker:Markoff: 2
++990.279896,,Marker:Markon: 2
++1019.828986,,Marker:Markoff: 2
++1020.1370429,,Marker:Markon: 2
++1049.781896,,Marker:Markoff: 2
++1050.1986542,,Marker:Markon: 2
++1052.87164,,spindle
++1069.065896,,k-complex
++1078.6062371,,k-complex
++1079.781896,,Marker:Markoff: 2
++1080.197896,,Marker:Markon: 2
++1086.8526826,,spindle
++1098.9806446,,spindle
++1109.781896,,Marker:Markoff: 2
++1110.197896,,Marker:Markon: 2
++1115.9806446,,spindle
++1118.9190333,,spindle
++1128.01382,,spindle
++1135.3171375,,spindle
++1139.781896,,Marker:Markoff: 2
++1140.197896,,Marker:Markon: 2
++1160.6773271,,spindle
++1169.781896,,Marker:Markoff: 2
++1170.197896,,Marker:Markon: 2
++1177.9474693,,spindle
++1195.056474,,k-complex
++1199.781896,,Marker:Markoff: 2
++1200.197896,,Marker:Markon: 2
++1217.9759053,,spindle
++1222.9285119,,spindle
++1229.781896,,Marker:Markoff: 2
++1230.197896,,Marker:Markon: 2
++1235.8384645,,spindle
++1238.1370427,,k-complex
++1259.781896,,Marker:Markoff: 2
++1260.197896,,Marker:Markon: 2
++1285.4403603,,k-complex
++1285.7247205,,spindle
++1289.781896,,Marker:Markoff: 2
++1290.197896,,Marker:Markon: 2
++1317.9522086,,k-complex
++1319.781896,,Marker:Markoff: 2
++1320.197896,,Marker:Markon: 2
++1346.0232987,,spindle
++1349.781896,,Marker:Markoff: 2
++1350.197896,,Marker:Markon: 2
++1379.781896,,Marker:Markoff: 2
++1380.197896,,Marker:Markon: 2
++1408.592019,,k-complex
++1409.1370427,,spindle
++1409.781896,,Marker:Markoff: 2
++1410.197896,,Marker:Markon: 2
++1426.7626352,,spindle
++1439.781896,,Marker:Markoff: 2
++1440.197896,,Marker:Markon: 2
++1444.5588437,,k-complex
++1457.028038,,spindle
++1459.2176115,,spindle
++1469.781896,,Marker:Markoff: 2
++1470.197896,,Marker:Markon: 2
++1499.781896,,Marker:Markoff: 2
++1500.197896,,Marker:Markon: 2
++1507.8716399,,spindle
++1510.999602,,k-complex
++1529.781896,,Marker:Markoff: 2
++1530.197896,,Marker:Markon: 2
++1559.781896,,Marker:Markoff: 2
++1560.1702181,,spindle
++1560.197896,,Marker:Markon: 2
++1582.08491,,spindle
++1589.781896,,Marker:Markoff: 2
++1590.197896,,Marker:Markon: 2
++1593.8526826,,k-complex
++1619.781896,,Marker:Markoff: 2
++1620.197896,,Marker:Markon: 2
++1627.8479432,,spindle
++1635.1844361,,k-complex
++1649.781896,,Marker:Markoff: 2
++1650.197896,,Marker:Markon: 2
++1650.7057631,,k-complex
++1664.9759053,,k-complex
++1679.781896,,Marker:Markoff: 2
++1680.197896,,Marker:Markon: 2
++1691.01382,,spindle
++1698.3787489,,spindle
++1704.4735356,,spindle
++1709.781896,,Marker:Markoff: 2
++1710.197896,,Marker:Markon: 2
++1713.9237726,,spindle
++1739.781896,,Marker:Markoff: 2
++1740.197896,,Marker:Markon: 2
++1740.8289859,,k-complex
++1756.245896,,k-complex
++1769.781896,,Marker:Markoff: 2
++1770.197896,,Marker:Markon: 2
++1784.1416305,,k-complex
++1786.7340476,,spindle

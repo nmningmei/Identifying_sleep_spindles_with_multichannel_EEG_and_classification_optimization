@@ -1,0 +1,234 @@
+Onset,Duration,Annotation
++0.8326,,Marker: Markon: w
++30.6565861,,Marker: Markoff: w
++31.0189675,,Marker: Markon: w
++60.6048884,,Marker: Markoff: w
++61.0186,,Marker: Markon: w
++90.6556,,Marker: Markoff: w
++91.0186,,Marker: Markon: w
++120.6046,,Marker: Markoff: w
++121.0186,,Marker: Markon: w
++150.6556,,Marker: Markoff: w
++151.0186,,Marker: Markon: w
++180.5536401,,Marker: Markoff: w
++181.0186,,Marker: Markon: 1
++210.5536,,Marker: Markoff: 1
++211.0186,,Marker: Markon: 1
++240.5536,,Marker: Markoff: 1
++241.0186,,Marker: Markon: 1
++270.5536,,Marker: Markoff: 1
++271.0186,,Marker: Markon: 1
++287.0384446,,spindle
++300.5536,,Marker: Markoff: 1
++301.0186,,Marker: Markon: 1
++322.7304205,,spindle
++330.5536,,Marker: Markoff: 1
++331.0186,,Marker: Markon: 1
++360.5536,,Marker: Markoff: 1
++361.0186,,Marker: Markon: 1
++390.5536,,Marker: Markoff: 1
++391.0186,,Marker: Markon: 1
++418.6838286,,k-complex
++420.1022928,,spindle
++420.5536,,Marker: Markoff: 1
++421.0186,,Marker: Markon: 1
++450.5536,,Marker: Markoff: 1
++451.0186,,Marker: Markon: 1
++470.9728709,,spindle
++480.5536,,Marker: Markoff: 1
++481.0186,,Marker: Markon: 1
++504.3999632,,spindle
++510.5536,,Marker: Markoff: 1
++511.0186,,Marker: Markon: 1
++518.2092815,,spindle
++540.5536,,Marker: Markoff: 1
++541.0186,,Marker: Markon: 1
++570.5536,,Marker: Markoff: 1
++571.0366,,Marker:Markon:1
++577.4301616,,spindle
++581.7528536,,spindle
++585.8348208,,spindle
++600.6096,,Marker:Markoff:1
++601.0366,,Marker:Markon:1
++620.9081599,,spindle
++630.5536,,Marker: Markoff: 1
++631.0366,,Marker:Markon:1
++660.5536,,Marker: Markoff: 1
++661.0366,,Marker:Markon:1
++679.7537164,,spindle
++686.188574,,k-complex
++690.5536,,Marker: Markoff: 2
++691.0706,,Marker:Markon:2
++707.3128191,,spindle
++720.5536,,Marker: Markoff: 2
++721.0366,,Marker:Markon:2
++724.7977199,,spindle
++729.6122151,,spindle
++732.0712315,,k-complex
++739.2748553,,spindle
++740.9055715,,spindle
++750.5536,,Marker: Markoff: 2
++751.0366,,Marker:Markon:2
++753.6872798,,spindle
++780.5536,,Marker: Markoff: 2
++781.0366,,Marker:Markon:2
++781.8287811,,spindle
++800.7606189,,spindle
++805.898669,,spindle
++808.9012574,,spindle
++810.5536,,Marker: Markoff: 2
++811.0366,,Marker:Markon:2
++813.0427587,,spindle
++820.4016888,,spindle
++825.5009123,,spindle
++831.9642427,,spindle
++839.9636,,spindle
++840.5536,,Marker: Markoff: 2
++841.0366,,Marker:Markon:2
++853.7433627,,spindle
++861.009109,,spindle
++869.5716629,,spindle
++870.5536,,Marker: Markoff: 2
++871.0366,,Marker:Markon:2
++884.7528536,,spindle
++895.7951314,,spindle
++900.5536,,Marker: Markoff: 2
++901.0366,,Marker:Markon:2
++902.8796871,,spindle
++908.1005671,,spindle
++919.7407742,,spindle
++928.8158389,,spindle
++930.5536,,Marker: Markoff: 2
++931.0366,,Marker:Markon:2
++937.1247259,,spindle
++940.0755456,,k-complex
++940.2308519,,spindle
++949.1506103,,spindle
++955.2334403,,spindle
++960.1954765,,k-complex
++960.5536,,Marker: Markoff: 2
++961.0366,,Marker:Markon:2
++982.8184274,,spindle
++986.2869347,,k-complex
++986.5457785,,spindle
++990.5536,,Marker: Markoff: 2
++991.0366,,Marker:Markon:2
++1000.6424136,,spindle
++1006.3369778,,spindle
++1020.5536,,Marker: Markoff: 2
++1020.8658821,,spindle
++1021.0366,,Marker:Markon:2
++1030.8656,,spindle
++1040.3154075,,spindle
++1048.0444843,,spindle
++1050.5536,,Marker: Markoff: 2
++1051.0366,,Marker:Markon:2
++1051.0470727,,spindle
++1062.7856405,,spindle
++1074.1877112,,spindle
++1080.5536,,Marker: Markoff: 2
++1081.0366,,Marker:Markon:2
++1081.4094541,,spindle
++1099.2826206,,k-complex
++1099.7744239,,spindle
++1104.889178,,spindle
++1110.5536,,Marker: Markoff: 2
++1111.0366,,Marker:Markon:2
++1131.4232591,,spindle
++1137.4226,,spindle
++1140.5536,,Marker: Markoff: 2
++1141.0366,,Marker:Markon:2
++1142.3723532,,spindle
++1156.8236042,,spindle
++1161.9927155,,spindle
++1167.1695922,,spindle
++1170.5536,,Marker: Markoff: 2
++1171.0366,,Marker:Markon:2
++1172.0280909,,spindle
++1177.0185999,,spindle
++1200.5536,,Marker: Markoff: 2
++1201.0366,,Marker:Markon:2
++1202.2636388,,spindle
++1220.3904722,,spindle
++1223.3930607,,spindle
++1227.7312833,,spindle
++1231.0366,,Marker:Markon:2
++1239.8115249,,spindle
++1254.3740788,,spindle
++1256.1549243,,spindle
++1260.5536,,Marker: Markoff: SWS
++1261.1324911,,Marker:Markon: SWS
++1267.751128,,spindle
++1273.8494886,,spindle
++1283.879687,,spindle
++1287.8796,,spindle
++1290.5536,,Marker: Markoff: SWS
++1291.1316,,Marker:Markon: SWS
++1313.2791693,,spindle
++1320.5536,,Marker: Markoff: SWS
++1321.1316,,Marker:Markon: SWS
++1327.3732159,,spindle
++1350.5536,,Marker: Markoff: SWS
++1351.1143721,,spindle
++1351.1316,,Marker:Markon: SWS
++1368.4387897,,spindle
++1374.9098854,,spindle
++1380.5536,,Marker: Markoff: SWS
++1381.1316,,Marker:Markon: SWS
++1382.312819,,spindle
++1389.8736473,,spindle
++1394.5069519,,spindle
++1410.5536,,Marker: Markoff: SWS
++1411.1316,,Marker:Markon: SWS
++1414.8909036,,spindle
++1440.5536,,Marker: Markoff: SWS
++1441.1316,,Marker:Markon: SWS
++1441.8443117,,spindle
++1444.9245533,,spindle
++1463.017737,,spindle
++1466.9003945,,spindle
++1470.5536,,Marker: Markoff: SWS
++1470.9124739,,spindle
++1471.1316,,Marker:Markon: SWS
++1484.6674351,,spindle
++1488.1773574,,spindle
++1491.2058302,,spindle
++1495.0108345,,spindle
++1498.1169605,,spindle
++1500.5536,,Marker: Markoff: SWS
++1501.1316,,Marker:Markon: SWS
++1530.5536,,Marker: Markoff: SWS
++1531.1316,,Marker:Markon: SWS
++1543.0056577,,spindle
++1560.5536,,Marker: Markoff: SWS
++1561.1316,,Marker:Markon: SWS
++1572.8840011,,spindle
++1590.5536,,Marker: Markoff: SWS
++1591.1316,,Marker:Markon: SWS
++1594.7381857,,spindle
++1619.4085912,,spindle
++1620.5536,,Marker: Markoff: SWS
++1621.1316,,Marker:Markon: SWS
++1636.4076,,spindle
++1647.8063479,,spindle
++1650.5536,,Marker: Markoff: SWS
++1651.1316,,Marker:Markon: SWS
++1667.1730433,,spindle
++1670.46036,,spindle
++1678.4922841,,spindle
++1680.5536,,Marker: Markoff: SWS
++1681.1316,,Marker:Markon: SWS
++1684.8857267,,spindle
++1696.9737336,,spindle
++1709.5613091,,spindle
++1710.5536,,Marker: Markoff: SWS
++1711.1316,,Marker:Markon: SWS
++1724.3024653,,spindle
++1737.0531124,,k-complex
++1737.2601874,,spindle
++1740.5536,,Marker: Markoff: SWS
++1741.1316,,Marker:Markon: SWS
++1758.824467,,spindle
++1762.5000494,,spindle
++1770.5536,,Marker: Markoff: SWS
++1771.1316,,Marker:Markon: SWS
