@@ -12,6 +12,7 @@ import numpy as np
 import mne
 import pandas as pd
 from sklearn import metrics
+import os
 
 file_in_fold=eegPinelineDesign.change_file_directory('D:\\NING - spindle\\training set')
 channelList = ['F3','F4','C3','C4','O1','O2']
@@ -20,6 +21,10 @@ annotation_in_fold=[files for files in file_in_fold if ('txt' in files) and ('an
 lower = np.arange(0.1,1.1,0.1)
 higher = np.arange(2.5,3.6,0.1)
 pairs = [(l,h) for l in lower for h in higher]
+saving_dir = 'D:\\NING - spindle\\training set\\re-run\\'
+if not os.path.exists(saving_dir):
+    #print(directory_2)
+    os.makedirs(saving_dir)
 result = {'sub':[],'day':[],'lower_threshold':[],'higher_threshold':[],'roc_auc':[]}
 
 for file in list_file_to_read:
@@ -46,12 +51,18 @@ for file in list_file_to_read:
         a.get_raw(raw)
         a.get_epochs()
         a.get_annotation(annotation)
+        a.mauanl_label()
+        if a.spindles.shape[0] < 20:
+            print(sub,day,'pass')
+            pass
         def cost(params):
             lower_threshold,higher_threshold = params
+            print('FBT model')
             a.find_onset_duration(lower_threshold,higher_threshold)
+            print('sleep stage 2 check')
             a.sleep_stage_check()
+            print('compute probability')
             a.fit_predict_proba()
-            a.mauanl_label()
             return metrics.roc_auc_score(a.manual_labels,a.auto_proba)
         for p in pairs:
             print(sub,day,p)
@@ -60,6 +71,8 @@ for file in list_file_to_read:
             result['lower_threshold'].append(p[0])
             result['higher_threshold'].append(p[1])
             result['roc_auc'].append(cost(p))
+            temp = pd.DataFrame(result)
+            temp.to_csv(saving_dir+'temp_result.csv',index=False)
             
     else:
         print(sub,day,'no annotation')

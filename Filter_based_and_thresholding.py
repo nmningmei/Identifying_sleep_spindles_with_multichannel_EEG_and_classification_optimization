@@ -310,6 +310,7 @@ class Filter_based_and_thresholding:
                                                          validation_windowsize,
                                                          spindles,)
         self.manual_labels = manual_labels
+        self.spindles = spindles
 """
 if __name__ == "__main__":
     
