@@ -55,24 +55,25 @@ for file in list_file_to_read:
         if a.spindles.shape[0] < 20:
             print(sub,day,'pass')
             pass
-        def cost(params):
-            lower_threshold,higher_threshold = params
-            print('FBT model')
-            a.find_onset_duration(lower_threshold,higher_threshold)
-            print('sleep stage 2 check')
-            a.sleep_stage_check()
-            print('compute probability')
-            a.fit_predict_proba()
-            return metrics.roc_auc_score(a.manual_labels,a.auto_proba)
-        for p in pairs:
-            print(sub,day,p)
-            result['sub'].append(sub)
-            result['day'].append(day)
-            result['lower_threshold'].append(p[0])
-            result['higher_threshold'].append(p[1])
-            result['roc_auc'].append(cost(p))
-            temp = pd.DataFrame(result)
-            temp.to_csv(saving_dir+'temp_result.csv',index=False)
+        else:
+            def cost(params):
+                lower_threshold,higher_threshold = params
+                print('FBT model')
+                a.find_onset_duration(lower_threshold,higher_threshold)
+                print('sleep stage 2 check')
+                a.sleep_stage_check()
+                print('compute probability')
+                a.fit_predict_proba()
+                return metrics.roc_auc_score(a.manual_labels,a.auto_proba)
+            for p in pairs:
+                print(sub,day,p)
+                result['sub'].append(sub)
+                result['day'].append(day)
+                result['lower_threshold'].append(p[0])
+                result['higher_threshold'].append(p[1])
+                result['roc_auc'].append(cost(p))
+                temp = pd.DataFrame(result)
+                temp.to_csv(saving_dir+'temp_result.csv',index=False)
             
     else:
         print(sub,day,'no annotation')
