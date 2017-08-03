@@ -68,7 +68,7 @@ class Filter_based_and_thresholding:
         find_onset_duration: use Filter-based and thresholding method to find onests and durations of sleep spindles
         sleep_stage_check: work on the annotation data frame. If sleep stage information is provided in the data frame, 
                 we will use it to exclude found spindles that are not in the sleep stage 2
-        predict_proba: work on epoch data. Extra three types of features: 1) signal feature, 
+        prepare_validation: work on epoch data. Extra three types of features: 1) signal feature, 
                 computed by pseudo- filter-based and thresholding method, 2) frequency feature, the dominant frequency, 
                 3) power feature: the power of the dominant frequency
         manual_label: use information provided by the annotation data frame to generate 0,1 labels for cross validating 
@@ -80,8 +80,6 @@ class Filter_based_and_thresholding:
                 l_bound=0.5,
                 h_bound=2,tol=1,
                 front=300,back=100,
-                sleep_stage=True,
-                proba=False,
                 validation_windowsize=3,
                 l_freq=11,h_freq=16):
         if channelList is None:
@@ -255,12 +253,9 @@ class Filter_based_and_thresholding:
         except:
             print('stage 2 missing')
         
-    def fit_predict_proba(self,proba_exclude=False,proba_threshold=0.5,n_jobs=1):
+    def prepare_validation(self,):
         import pandas as pd
-        from sklearn.preprocessing import StandardScaler
-        from scipy.stats import trim_mean
-        from sklearn.linear_model import LogisticRegressionCV
-        from sklearn.model_selection import cross_val_predict
+        
         channelList = self.channelList
         lower_threshold = self.lower_threshold
         higher_threshold = self.higher_threshold
@@ -272,25 +267,50 @@ class Filter_based_and_thresholding:
         front = self.front
         back = self.back
         raw = self.raw
+        
         result = pd.DataFrame({'Onset':time_find,'Duration':Duration,'Annotation':['spindle']*len(Duration)})
         
         data = epochs.get_data()
         full_prop = [[psuedo_rms(lower_threshold,higher_threshold,d[ii,:]) for ii,name in enumerate(channelList)] for d in data]
         
         features = pd.DataFrame(np.concatenate((np.array(full_prop),psds.max(2),freq[np.argmax(psds,2)]),1))
-        decision_features = StandardScaler().fit_transform(features.values)
+        
+        
+        auto_label,_ = discritized_onset_label_auto(epochs,raw,result,
+                                                 validation_windowsize,
+                                                 front=front,back=back)
+        self.auto_label = auto_label
+        self.decision_features = features
+        
+    def fit(self,proba_exclude=False,proba_threshold=0.5,n_jobs=1):
+        from sklearn.linear_model import LogisticRegressionCV
+        from sklearn.model_selection import cross_val_predict,KFold
+        from sklearn.pipeline import Pipeline
+        from sklearn.preprocessing import StandardScaler
+        decision_features = self.decision_features
+        auto_label = self.auto_label
+        cv = KFold(n_splits=5,shuffle=True,random_state=12345)
         clf = LogisticRegressionCV(Cs=np.logspace(-4,6,11),
-                                   cv=5,
+                                   cv=cv,
                                    tol=1e-5,
                                    max_iter=int(1e4),
                                    scoring='roc_auc',
                                    class_weight='balanced',
                                    n_jobs=n_jobs)
-        auto_label,_ = discritized_onset_label_auto(epochs,raw,result,
-                                                 validation_windowsize,
-                                                 front=front,back=back)
-        auto_proba = cross_val_predict(clf,decision_features,auto_label,cv=5,method='predict_proba')
-        auto_proba = auto_proba[:,-1]
+        clf = Pipeline([('scaler',StandardScaler()),
+                        ('estimator',clf)])
+        
+        try:
+            auto_proba = cross_val_predict(clf,decision_features,auto_label,cv=cv,method='predict_proba',n_jobs=n_jobs)
+            auto_proba = auto_proba[:,-1]
+        except:
+            try:
+                auto_proba = cross_val_predict(clf,decision_features,auto_label,cv=5,method='predict_proba',n_jobs=n_jobs)
+                auto_proba = auto_proba[:,-1]
+            except:
+                
+                auto_proba = cross_val_predict(clf,decision_features,auto_label,cv=3,method='predict_proba',n_jobs=n_jobs)
+                auto_proba = auto_proba[:,-1]
         if proba_exclude:
             idx_ = np.where(auto_proba > proba_threshold)
             auto_label = auto_label[idx_]
