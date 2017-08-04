@@ -1,5 +1,5 @@
 # Identifying_sleep_spindles_with_multichannel_EEG_and_classification_optimization
-Scripts and figures that included in the paper
+Scripts and figures that included in the [paper](https://osf.io/aqgxe/)
 
 
 1. [Figure](https://github.com/adowaconan/Identifying_sleep_spindles_with_multichannel_EEG_and_classification_optimization/tree/master/Figures) folder contains the final figures that used in the paper
