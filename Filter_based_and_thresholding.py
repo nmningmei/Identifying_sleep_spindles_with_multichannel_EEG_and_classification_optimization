@@ -250,9 +250,11 @@ class Filter_based_and_thresholding:
             self.time_find = temp_time_find
             self.mean_peak_power = temp_mean_peak_power
             self.Duration = temp_duration
+            
         except:
             print('stage 2 missing')
-        
+        result = pd.DataFrame({'Onset':time_find,'Duration':Duration,'Annotation':['spindle']*len(Duration)})
+        self.auto_scores = result
     def prepare_validation(self,):
         import pandas as pd
         
