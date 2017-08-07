@@ -62,7 +62,7 @@ def discritized_onset_label_manual(epochs,raw,epoch_length, df,spindle_duration=
                 #print(time_interval,spindle-0.5,spindle+1.5)
                 discritized_time_to_zero_one_labels[jj] = 1
     return discritized_time_to_zero_one_labels,discritized_time_to_zero_one_labels
-def discritized_onset_label_auto(epochs,raw,df,epoch_length,front=0,back=0):
+def discritized_onset_label_auto(epochs,raw,df,epoch_length):
     temporal_event = epochs.events[:,0] / raw.info['sfreq']
     start_times = temporal_event
     end_times = start_times + epoch_length

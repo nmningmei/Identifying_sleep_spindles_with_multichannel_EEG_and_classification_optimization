@@ -89,3 +89,4 @@ for file in list_file_to_read:
     else:
         print(sub,day,'no annotation')
 result = pd.DataFrame(result)
+result.to_csv('optimized.csv',index=False)

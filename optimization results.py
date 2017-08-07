@@ -65,7 +65,7 @@ thresholds2=optimized.iloc[:7][['higher_threshold','lower_threshold']].mean().va
 thresholds3=optimized[['higher_threshold','lower_threshold']].median().values # both scorers - median
 os.chdir('D:\\NING - spindle\\training set\\')
 behavioral = pd.read_excel('spindle result_behavioral data_updated October 4 2016.xlsx')
-if False:
+if True:
     results = {'sub':[],
                'load':[],
                'spindle':[],
@@ -160,3 +160,5 @@ for Ts,row_axes in zip([thresholds1,thresholds2,thresholds3],axes):
         ax.set(title='higher:%.2f,lower:%.2f'%(higher,lower),xlabel='median power density',ylabel=predictee)
         ax.legend(loc='upper right')
 fig.savefig('D:\\NING - spindle\\training set\\re-run\\compare across thrseholds (median_power_density).png',dpi=500)          
+
+

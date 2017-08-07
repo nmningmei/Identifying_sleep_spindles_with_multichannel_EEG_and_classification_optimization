@@ -101,10 +101,12 @@ class Filter_based_and_thresholding:
         raw.load_data()
         raw.pick_channels(self.channelList)
         raw.filter(self.l_freq,self.h_freq)
+        back = self.back
         self.raw = raw
         sfreq = raw.info['sfreq']
         self.moving_window_size = sfreq
         self.sfreq = sfreq
+        self.last = raw.last_samp/sfreq - back
         
     def get_annotation(self,annotation):
         annotation = annotation
@@ -158,7 +160,7 @@ class Filter_based_and_thresholding:
             mph[names] = trim_mean(RMS[ii,int(front*sfreq):-int(back*sfreq)],0.05) + lower_threshold * trimmed_std(RMS[ii,int(front*sfreq):-int(back*sfreq)],0.05) 
             mpl[names] = trim_mean(RMS[ii,int(front*sfreq):-int(back*sfreq)],0.05) + higher_threshold * trimmed_std(RMS[ii,int(front*sfreq):-int(back*sfreq)],0.05)
             pass_ = RMS[ii,:] > mph[names]#should be greater than then mean not the threshold to compute duration
-            
+            #pass_ = (RMS[ii,:] > mph[names]) & (RMS[ii,:] < mpl[names])
             up = np.where(np.diff(pass_.astype(int))>0)
             down = np.where(np.diff(pass_.astype(int))<0)
             up = up[0]
@@ -181,7 +183,8 @@ class Filter_based_and_thresholding:
         RMS_mean = hmean(RMS)
         mph['mean'] = trim_mean(RMS_mean[int(front*sfreq):-int(back*sfreq)],0.05) + lower_threshold * trimmed_std(RMS_mean,0.05)
         mpl['mean'] = trim_mean(RMS_mean[int(front*sfreq):-int(back*sfreq)],0.05) + higher_threshold * trimmed_std(RMS_mean,0.05)
-        pass_ =RMS_mean > mph['mean']
+        pass_ = RMS_mean > mph['mean']
+        #pass_ = (RMS_mean > mph['mean']) & (RMS_mean < mpl['mean'])
         up = np.where(np.diff(pass_.astype(int))>0)
         down= np.where(np.diff(pass_.astype(int))<0)
         up = up[0]
@@ -229,6 +232,8 @@ class Filter_based_and_thresholding:
         time_find = self.time_find
         mean_peak_power = self.mean_peak_power
         Duration = self.Duration
+        front = self.front
+        last = self.last
         try:
             temp_time_find=[];temp_mean_peak_power=[];temp_duration=[];
             # seperate out stage 2
@@ -254,6 +259,7 @@ class Filter_based_and_thresholding:
         except:
             print('stage 2 missing')
         result = pd.DataFrame({'Onset':time_find,'Duration':Duration,'Annotation':['spindle']*len(Duration)})
+        result = result[(result['Onset'] > front) & (result['Onset'] < last)]
         self.auto_scores = result
     def prepare_validation(self,):
         import pandas as pd
@@ -279,8 +285,7 @@ class Filter_based_and_thresholding:
         
         
         auto_label,_ = discritized_onset_label_auto(epochs,raw,result,
-                                                 validation_windowsize,
-                                                 front=front,back=back)
+                                                 validation_windowsize)
         self.auto_label = auto_label
         self.decision_features = features
         
