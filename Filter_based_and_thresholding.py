@@ -11,7 +11,6 @@ import os
 import pandas as pd
 from utilities import *
 from sklearn import metrics
-from tqdm import tqdm
 
 class Filter_based_and_thresholding:
     """
@@ -76,7 +75,7 @@ class Filter_based_and_thresholding:
                 the predicted probabilities/predicted labels, or optimizing the pipeline
     
     """
-    def __init__(self,channelList=None,moving_window_size=500,
+    def __init__(self,channelList=None,moving_window_size=200,
                 syn_channels=3,
                 l_bound=0.5,
                 h_bound=2,tol=1,
@@ -100,10 +99,9 @@ class Filter_based_and_thresholding:
     
     def get_raw(self,raw):
         raw.load_data()
-        l_freq,h_freq=self.l_freq,self.h_freq
         raw.pick_channels(self.channelList)
         raw.info.normalize_proj()
-        raw.filter(l_freq,h_freq)
+        raw.filter(self.l_freq,self.h_freq)
         back = self.back
         self.raw = raw
         sfreq = raw.info['sfreq']
@@ -128,7 +126,6 @@ class Filter_based_and_thresholding:
                                              duration=validation_windowsize)
         epochs = mne.Epochs(raw,events,event_id=1,tmin=0,tmax=validation_windowsize,
                            preload=True)
-        epochs.resample(64)
         psds,freq = psd_multitaper(epochs,fmin=l_freq,
                                         fmax=h_freq,
                                         tmin=0,tmax=validation_windowsize,
@@ -150,7 +147,6 @@ class Filter_based_and_thresholding:
         h_bound = self.h_bound
         tol = self.tol
         syn_channels = self.syn_channels
-        
 
         sfreq=raw.info['sfreq']
         time=np.linspace(0,raw.last_samp/sfreq,raw.last_samp)
@@ -158,7 +154,7 @@ class Filter_based_and_thresholding:
         peak_time={} 
         mph,mpl = {},{}
         
-        for ii,names in tqdm(enumerate(channelList)):
+        for ii,names in enumerate(channelList):
             peak_time[names]=[]
             segment,_ = raw[ii,:]
             RMS[ii,:] = window_rms(segment[0,:],moving_window_size) 
@@ -277,6 +273,8 @@ class Filter_based_and_thresholding:
         psds = self.psds
         freq = self.freq
         validation_windowsize = self.validation_windowsize
+        front = self.front
+        back = self.back
         raw = self.raw
         
         result = pd.DataFrame({'Onset':time_find,'Duration':Duration,'Annotation':['spindle']*len(Duration)})
@@ -289,48 +287,46 @@ class Filter_based_and_thresholding:
         
         auto_label,_ = discritized_onset_label_auto(epochs,raw,result,
                                                  validation_windowsize)
-        self.auto_labels = auto_label
+        self.auto_label = auto_label
         self.decision_features = features
         
-    def fit(self,proba_exclude=False,proba_threshold=0.5,n_jobs=1,cv=None,clf=None):
+    def fit(self,proba_exclude=False,proba_threshold=0.5,n_jobs=1):
         from sklearn.linear_model import LogisticRegressionCV
         from sklearn.model_selection import cross_val_predict,KFold
         from sklearn.pipeline import Pipeline
         from sklearn.preprocessing import StandardScaler
         decision_features = self.decision_features
-        auto_labels = self.auto_labels
-        if cv is None:
-            cv = KFold(n_splits=5,shuffle=True,random_state=12345)
-        if clf is None:
-            clf = LogisticRegressionCV(Cs=np.logspace(-4,6,11),
+        auto_label = self.auto_label
+        cv = KFold(n_splits=5,shuffle=True,random_state=12345)
+        clf = LogisticRegressionCV(Cs=np.logspace(-4,6,11),
                                    cv=cv,
                                    tol=1e-5,
                                    max_iter=int(1e4),
                                    scoring='roc_auc',
                                    class_weight='balanced',
                                    n_jobs=n_jobs)
-            clf = Pipeline([('scaler',StandardScaler()),
+        clf = Pipeline([('scaler',StandardScaler()),
                         ('estimator',clf)])
         
         try:
-            auto_proba = cross_val_predict(clf,decision_features,auto_labels,cv=cv,method='predict_proba',n_jobs=n_jobs)
+            auto_proba = cross_val_predict(clf,decision_features,auto_label,cv=cv,method='predict_proba',n_jobs=n_jobs)
             auto_proba = auto_proba[:,-1]
         except:
             try:
-                auto_proba = cross_val_predict(clf,decision_features,auto_labels,cv=5,method='predict_proba',n_jobs=n_jobs)
+                auto_proba = cross_val_predict(clf,decision_features,auto_label,cv=5,method='predict_proba',n_jobs=n_jobs)
                 auto_proba = auto_proba[:,-1]
             except:
                 
-                auto_proba = cross_val_predict(clf,decision_features,auto_labels,cv=3,method='predict_proba',n_jobs=n_jobs)
+                auto_proba = cross_val_predict(clf,decision_features,auto_label,cv=3,method='predict_proba',n_jobs=n_jobs)
                 auto_proba = auto_proba[:,-1]
         if proba_exclude:
-            idx_ = np.where(auto_proba < proba_threshold)
-            auto_labels[idx_] = 0
-            #auto_proba[idx_]
-        self.auto_labels = auto_labels
+            idx_ = np.where(auto_proba > proba_threshold)
+            auto_label = auto_label[idx_]
+            auto_proba = auto_proba[idx_]
+        self.auto_label = auto_label
         self.auto_proba = auto_proba
         
-    def make_manuanl_label(self):
+    def mauanl_label(self):
         raw = self.raw
         epochs = self.epochs
         annotations = self.annotation
@@ -359,9 +355,8 @@ if __name__ == "__main__":
         lower_threshold,higher_threshold = params
         a.find_onset_duration(lower_threshold,higher_threshold)
         a.sleep_stage_check()
-        a.prepare_validation()
-        a.make_manuanl_label()
-        a.fit()
+        a.fit_predict_proba()
+        a.mauanl_label()
         return metrics.roc_auc_score(a.manual_labels,a.auto_proba)
     lower = np.arange(0.1,1.1,0.1)
     higher = np.arange(2.5,3.6,0.1)
